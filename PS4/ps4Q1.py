@@ -278,7 +278,7 @@ def simpleTripleLorentzianFunction(p,t):
 def chiSquare(p,x,f,noiseValues):
     
     # Defining predicted value to compare to
-    predictedValues = simpleTripleLorentzianFunction(p,timeRange) ###################################
+    predictedValues = simpleTripleLorentzianFunction(p,timeRange)
     
     # Defining the outputted chisquare
     chisquareValue = np.sum(((f-predictedValues)/noiseValues)**2)
@@ -320,7 +320,7 @@ def MCMC(parameters,stepSize,t,f,function,noiseValues,numberOfSteps=1000):
 
 # Computing the best-fit parameters via the MCMC algorithm 
 previousBestFitParameters = initialGuessCopy
-stepSizeChoice = np.array([9.14128147e-04, 8.70429036e-04, 8.52345103e-04, 1.08008106e-08, 1.93273356e-08, 1.30674361e-07])
+stepSizeChoice = np.sqrt(np.diag(covarianceMatrix))
 outputChain, outputChisquareVector = MCMC(previousBestFitParameters,stepSizeChoice,timeRange,signalValues,chiSquare,σ,numberOfSteps=20000)
 
        
@@ -350,12 +350,12 @@ dtAverage = np.mean(outputChain[:,5])
 dtStandardDeviation = np.std(outputChain[:,5])
 
 # Printing the best-fit parameters and their error
-print('Best fit-parameter a: ', aAverage,aStandardDeviation)
-print('Best fit-parameter b: ', bAverage,bStandardDeviation)
-print('Best fit-parameter c: ', cAverage,cStandardDeviation)
-print('Best fit-parameter t0: ', t0Average,t0StandardDeviation)
-print('Best fit-parameter omega: ', omegaAverage,omegaStandardDeviation)
-print('Best fit-parameter dt: ', dtAverage,dtStandardDeviation)
+print('Best fit-parameter a: ', aAverage, aStandardDeviation)
+print('Best fit-parameter b: ', bAverage, bStandardDeviation)
+print('Best fit-parameter c: ', cAverage, cStandardDeviation)
+print('Best fit-parameter t0: ', t0Average, t0StandardDeviation)
+print('Best fit-parameter omega: ', omegaAverage, omegaStandardDeviation)
+print('Best fit-parameter dt: ', dtAverage, dtStandardDeviation)
 
 
 # %% Computing the width of the resonant cavity
