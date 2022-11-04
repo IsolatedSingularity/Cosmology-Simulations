@@ -192,4 +192,73 @@ for event in dataEvents:
          ' Combined SNR = ', combinedEvents[event]['SNR'],'\n')
 
 
+# %% Computing the SNR for each event using the analytic form of the SNR
+
+# All of this is done iteratively for each event in the data
+for event in dataEvents:
+    
+    # Computing the SNR using the analytic equation
+    hanfordData[event]['SNR_A'] = np.max(
+        hanfordData[event]['MF']/np.std(np.fft.irfft(hanfordData[event]['TFT_white']))
+        )
+    livingstonData[event]['SNR_A'] = np.max(
+        livingstonData[event]['MF']/np.std(np.fft.irfft(livingstonData[event]['TFT_white']))
+        )
+    combinedEvents[event]['SNR_A'] = np.sqrt(
+        hanfordData[event]['SNR_A']**2 + livingstonData[event]['SNR_A']**2
+        )
+    
+    # Printing the results of the SNR analysis
+    print(event,':\n\n Hanford SNR analytic = ',hanfordData[event]['SNR_A']
+          ,', Livingston SNR analytic =',livingstonData[event]['SNR_A']
+          ,',\n Combined SNR analytic =',combinedEvents[event]['SNR_A'],'\n')
+    
+
+# %% Computing the frequency in which the weight is split in half on either side for each event
+
+# All of this is done iteratively for each event in the data
+for event in dataEvents:
+    
+    # Computing the frequency sum of the TFT for each event
+    hanfordData[event]['freqs'] = np.fft.rfftfreq(
+        len(hanfordData[event]['template']),hanfordData[event]['time']
+        )
+    power_H = np.abs(hanfordData[event]['TFT_white'])**2
+    hanfordData[event]['TFT_white_cum'] = np.cumsum(power_H)/np.sum(power_H)
+    
+    livingstonData[event]['freqs'] = np.fft.rfftfreq(
+        len(livingstonData[event]['template']),livingstonData[event]['time']
+        )
+    power_L=np.abs(livingstonData[event]['TFT_white'])**2
+    livingstonData[event]['TFT_white_cum'] = np.cumsum(power_L)/np.sum(power_L)
+    
+    # Computing the critical frequency for each event
+    hanfordData[event]['mid_freq'] = hanfordData[event]['freqs'][(np.abs(hanfordData[event]['TFT_white_cum'] - 0.5)).argmin()]
+    livingstonData[event]['mid_freq'] = livingstonData[event]['freqs'][(np.abs(livingstonData[event]['TFT_white_cum'] - 0.5)).argmin()]
+    
+    # Printing the computed frequency values
+    print(event,':\n\n Hanford critical frequency = ',hanfordData[event]['mid_freq']
+          ,', Livingston critical frequency =',livingstonData[event]['mid_freq'])
+    
+    
+# %% Computing the sensitivity in the time of arrival of the two detectors
+
+# Defining the difference in distance of the two detectors
+positionDifference = 2e3
+
+# Fixing a random event as the detectors use the same time steps
+event = 'LVT151012'
+
+# Combining the temporal error estimates for both detectors
+pathDifference = (c/1e3) * np.sqrt(
+    hanfordData[event]['time']**2 + livingstonData[event]['time']**2
+    )
+
+# Computing the uncertainty in the angular position
+angularUncertainty = np.arcsin(pathDifference/positionDifference)*(180/np.pi)
+
+# Printing the result of the uncertainty
+print('Angular position uncertainty =', angularUncertainty,'deg')
+
+
 # %%
