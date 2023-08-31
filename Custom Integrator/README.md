@@ -1,7 +1,7 @@
 # Custom Integrator for Analytic Functionals
 ###### For the computational physics graduate course taught by [Professor Jonathan Sievers](https://www.physics.mcgill.ca/~sievers/) at [McGill University](https://www.mcgill.ca/).
 
-![alt text](https://github.com/IsolatedSingularity/Cosmology-Simulations/blob/main/Chebyshev%20Functional%20Expansion/Plots/PlotIV.png)
+![alt text](https://github.com/IsolatedSingularity/Cosmology-Simulations/blob/main/Custom%20Integrator/Plots/PlotII.png)
 
 ## Objective
 
