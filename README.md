@@ -1,4 +1,4 @@
-# Phys-512-Assignments
-This repository will be for the submission of assignments for Phys 512: Computational physics.
+# Simulations in Cosmology and Astrophysics
+###### For the computational physics graduate course taught by [Professor Jonathan Sievers](https://www.physics.mcgill.ca/~sievers/) at [McGill University](https://www.mcgill.ca/).
 
 ![alt text](https://picsum.photos/200/300)
