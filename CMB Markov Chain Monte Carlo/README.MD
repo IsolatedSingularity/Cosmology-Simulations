@@ -5,12 +5,10 @@
 
 ## Objective
 
-Phase transitions in the very early universe cause spontaneous symmetry breaking events which create topological defects. Linear topological defects associated with the U(1) symmetry group are known as **cosmic strings** and create high energy signals in the form of wakes as they propagate through spacetime. Their presence thus is of interest to study the high energy structure of the universe and the standard model.
-
-The strings occur in a class of renormalizable quantum field theories and are stable under specific conditions on the spacetime manifold's homotopy groups. Their dynamics are given by the Nambu-Gotto action, much like bosonic excitations in string theory. What's more is that gravitational backreaction during the early universe causes primordial ΛCDM noise which hides the string signal. Thus the purpose of this repository is to develop statistics to efficiently extract the cosmic string signal admist the non-linear noise through the framework of 21cm cosmology.
+The cosmic microwave background (CMB) created in the early universe leaves a lasting signal that can be extracted from a noisy background with the use of Markov chain Monte Carlo (MCMC) simulations.
 
 ## Code Functionality
 
-*Cosmic String Extraction Statistics.py* builds the cosmic string signal from scratch as a finite density of energy radiating a certain temperature difference admist the 21cm background temperature map. This propagates through spacetime and traces out a wake which has the temperature gradient defined on its convex hull. Then using universe simulations done with 21cmFAST, the string signal is embedded in the primordial noise. Finally, to extract the dynamic signal we make use of statistics such as correlation functions, matched filters, and wavelets. The output are plots of these statistics when the signal of the string is detected in the noise.
+The code developed for this assignment is a efficient MCMC-based tool for analyzing cosmic microwave background (CMB) data. It acquires CMB intensity data from the Planck satellite, focusing on understanding the fundamental parameters governing our universe. At its core, the code employs the CAMB module to generate model CMB power spectra based on various cosmological parameters. It systematically adjusts parameters like the Hubble constant, baryonic matter density, and dark matter density to achieve the best possible match between the model spectra and observed CMB data.
 
-The report covering all the theory and code can be found in the main repository as a PDF file.
+The code evaluates the goodness of fit using the χ² statistic, enabling it to quantify how well the model aligns with the real-world data. It goes further by utilizing numerical optimization techniques to fine-tune these parameters, revealing crucial aspects of our universe, including the Hubble constant.
