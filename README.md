@@ -1,5 +1,5 @@
 # Simulations in Cosmology and Astrophysics
-###### For the computational physics graduate course taught by [Professor Jonathan Sievers](https://www.physics.mcgill.ca/~sievers/) at [McGill University](https://www.mcgill.ca/).
+###### For the graduate computational physics course taught by [Professor Jonathan Sievers](https://www.physics.mcgill.ca/~sievers/) at [McGill University](https://www.mcgill.ca/).
 
 ![alt text](https://github.com/IsolatedSingularity/Cosmology-Simulations/blob/main/Ligo%20Matched%20Filter/LIGOChainsPS6.png)
 
